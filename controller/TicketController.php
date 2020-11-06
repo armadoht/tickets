@@ -18,17 +18,12 @@
 		}
 
 		public function read_ticket(){
-			$origen = $_GET['valor'];
 			$ticket = new phpdesk_tickets();
-			
-			if($origen == 'abas'){
-				$array_ticket = $ticket->showTickAbastecedoras();
-			}else{
-				$array_ticket = $ticket->showTickLocalidad($origen);
-			}
-			$this->view("tickets_detalle",  array("title" =>"Detalle de Ticket", "array"=>$array_ticket));
+			$origen = $_GET['valor'];
+			$array_ticket = $ticket->showTickLocalidad($origen);
+			$detalle = "Detalle de Tickets ".$origen;
+			$this->view("tickets_detalle",  array("title" =>$origen, "array"=>$array_ticket));
 		}
-
+		
 	}
-
 ?>

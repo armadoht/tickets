@@ -29,44 +29,14 @@
 			parent ::EntidadBase($table);
 		}
 
-		public function showTickLocalidad($origen){
-			if($origen == '200.79.183.225'){
-				$query="SELECT * FROM phpdesk_tickets WHERE (ip = '200.79.183.225' || ip='187.174.100.242') and status = 'Open'";
-			}else{
-				$query="SELECT * FROM phpdesk_tickets WHERE ip = '$origen' and status = 'Open' ";	
-			}
-			
-			$result = $this->db()->query($query);
-			if($result->num_rows > 0){
-				while($row = $result->fetch_array()){
-					$resultSet[] = $row;
-				}
-				return $resultSet;
-			}else{
-				return 0;
-			}
-		}
+		//extraer el mes año y día 
 
-		public function showTickAbastecedoras(){
-			
-			$query="SELECT * FROM phpdesk_tickets WHERE (ip != '189.240.241.99' and ip != '187.188.90.158' and ip != '187.130.3.5' and ip != '187.174.100.242' and ip != '200.79.183.225') and  status = 'Open'";	
-			
-			$result = $this->db()->query($query);
-			if($result->num_rows > 0){
-				while($row = $result->fetch_array()){
-					$resultSet[] = $row;
-				}
-				return $resultSet;
-			}else{
-				return 0;
-			}
-		}
-
-
-		/*Total de tickets por localidad---->*/
 		//Hidalgo
 		public function showHidalgo(){
-			$query = "SELECT COUNT(*) FROM phpdesk_tickets WHERE (ip = '200.79.183.225' || ip = '187.174.100.242') and status = 'Open' ";
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+				
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Grupak Hidalgo' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
 			$result = $this->db()->query($query);
 			if($result->num_rows > 0){
 				$cont = $result->fetch_row();
@@ -74,11 +44,14 @@
         	}else{
         		return 0;
         	}
-		}//showHidalgo
+		}//Hidalgo
 
 		//Toluca
 		public function showTol(){
-			$query = "SELECT COUNT(*) FROM phpdesk_tickets WHERE ip = '187.130.3.5' and status = 'Open' ";
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Grupak Toluca' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
 			$result = $this->db()->query($query);
 			if($result->num_rows > 0){
 				$cont = $result->fetch_row();
@@ -86,11 +59,14 @@
         	}else{
         		return 0;
         	}
-		}//showHidalgo
+		}//showToluca
 
 		//Cuernavaca
 		public function showCva(){
-			$query = "SELECT COUNT(*) FROM phpdesk_tickets WHERE ip = '187.188.90.158' and status = 'Open' ";
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Grupak Cuernavaca' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
 			$result = $this->db()->query($query);
 			if($result->num_rows > 0){
 				$cont = $result->fetch_row();
@@ -98,11 +74,14 @@
         	}else{
         		return 0;
         	}
-		}//showHidalgo
+		}//showCuernavaca
 
 		//Corporativo
 		public function showCorp(){
-			$query = "SELECT COUNT(*) FROM phpdesk_tickets WHERE ip = '189.240.241.99' and status = 'Open' ";
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Grupak Corporativo' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
 			$result = $this->db()->query($query);
 			if($result->num_rows > 0){
 				$cont = $result->fetch_row();
@@ -110,12 +89,14 @@
         	}else{
         		return 0;
         	}
-		}//showHidalgo
+		}//Corporativo
 
-		//Corporativo
-		public function showAbas(){
-			$query = "SELECT COUNT(*) FROM phpdesk_tickets WHERE (ip != '189.240.241.99' and ip != '187.188.90.158' and ip != '187.130.3.5' and ip != '187.174.100.242' and ip != '200.79.183.225') and  status = 'Open'";
+		//Santa Clara
+		public function showAbasClara(){
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
 
+			$query ="SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Abastecimientos Fibrosos Santa Clara' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
 			$result = $this->db()->query($query);
 			if($result->num_rows > 0){
 				$cont = $result->fetch_row();
@@ -123,7 +104,113 @@
         	}else{
         		return 0;
         	}
-		}//showHidalgo
+		}//
+
+		//Santa Cuautitlán
+		public function showAbasCuautitlan(){
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Abastecimientos Fibrosos Cuautitlan' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
+			$result = $this->db()->query($query);
+			if($result->num_rows > 0){
+				$cont = $result->fetch_row();
+            	return  $cont[0];
+        	}else{
+        		return 0;
+        	}
+		}//
+
+		//Santa Toluca
+		public function showAbasToluca(){
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Abastecimientos Fibrosos Toluca' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
+			$result = $this->db()->query($query);
+			if($result->num_rows > 0){
+				$cont = $result->fetch_row();
+            	return  $cont[0];
+        	}else{
+        		return 0;
+        	}
+		}//
+
+		//San Luis Potosiitlán
+		public function showAbaSanLuis(){
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Abastecimientos Fibrosos Santa Luis Potosi' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
+			$result = $this->db()->query($query);
+			if($result->num_rows > 0){
+				$cont = $result->fetch_row();
+            	return  $cont[0];
+        	}else{
+        		return 0;
+        	}
+		}//
+
+		//Queretaro
+		public function showAbasQueretaro(){
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Abastecimientos  Queretaro' AND created_at BETWEEN  '$fechaInicio' AND '$fechaFinal';";
+			$result = $this->db()->query($query);
+			if($result->num_rows > 0){
+				$cont = $result->fetch_row();
+            	return  $cont[0];
+        	}else{
+        		return 0;
+        	}
+		}//
+
+		//Puebla
+		public function showAbasPuebla(){
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT count(*) AS ubicacion FROM bdgpk2.tickets WHERE ubicacion = 'Abastecimientos Fibrosos Puebla' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
+			$result = $this->db()->query($query);
+			if($result->num_rows > 0){
+				$cont = $result->fetch_row();
+            	return  $cont[0];
+        	}else{
+        		return 0;
+        	}
+		}//
+
+		//Localidades
+		public function showTickLocalidad($origen){
+			$fechaInicio = date("y")."-".date("m")."-01";
+			$fechaFinal = date("y")."-".date("m")."-".date("d");
+
+			$query = "SELECT * FROM bdgpk2.tickets WHERE ubicacion = '".$origen."' AND created_at BETWEEN '$fechaInicio' AND '$fechaFinal';";
+			$result = $this->db()->query($query);
+			if($result->num_rows > 0){
+				while($row = $result->fetch_array()){
+					$resultSet[] = $row;
+				}
+				return $resultSet;
+        	}else{
+        		return 0;
+        	}
+		}//
+
+		public function showStaff(){
+			$query = "SELECT * FROM bdgpk2.users where type = 'admin';";
+			$result = $this->db()->query($query);
+			if($result->num_rows > 0){
+				while($row = $result->fetch_array()){
+					$resultSet[] = $row;
+				}
+				return $resultSet;
+        	}else{
+        		return 0;
+        	}
+		}
+
 
 		
 	}

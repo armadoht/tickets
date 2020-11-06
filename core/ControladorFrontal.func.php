@@ -13,10 +13,20 @@
 	}//cargarControlador
 
 	function cargarControladorTicket(){
-		$controlador = "TicketController.php";
-		$strFileController = "controller/".$controlador;
-		require_once $strFileController;
+		require_once "controller/TicketController.php";
 		$controllerObj = new TicketController();
+		return $controllerObj;
+	}
+
+	function cargarControladorStaff(){
+		require_once "controller/StaffController.php";
+		$controllerObj = new StaffController();
+		return $controllerObj;
+	}
+
+	function cargarControladorDashboard(){
+		require_once "controller/DashboardController.php";
+		$controllerObj = new DashboardController();
 		return $controllerObj;
 	}
 

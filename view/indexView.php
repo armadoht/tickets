@@ -59,58 +59,132 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="hero">
-					<h2><span>Mesa de ayuda</span> | <?php echo $title ?></h2>
+					<h2><span>Reporte de Tickets</span> | <?php echo $title ?></h2>
 					<div class="bor"></div>
 					<p></p>
 				</div>
 			</div>
+			
 
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<div class="hero">
-					<h2><span>Hidalgo</span></h2>
+					<h2><span>HGO</span></h2>
 					<div class="bor"></div>
 					<h1><?php  echo $tick_hgo; ?></h1>
-					<a class="btn btn-danger" href="index.php?controller=ticket&action=read_ticket&valor=200.79.183.225">Ver mas...</a>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Grupak Hidalgo">Ver mas...</a>
 				</div>
 			</div>
 
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<div class="hero">
-					<h2><span>Toluca</span></h2>
+					<h2><span>TOL</span></h2>
 					<div class="bor"></div>
 					<h1><?php  echo $tick_tol ?></h1>
-					<a class="btn btn-danger" href="index.php?controller=ticket&action=read_ticket&valor=187.130.3.5">Ver mas...</a>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Grupak Toluca">Ver mas...</a>
 				</div>
 			</div>
 
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<div class="hero">
-					<h2><span>Cuernavaca</span></h2>
+					<h2><span>CVA</span></h2>
 					<div class="bor"></div>
 					<h1><?php  echo $tick_cva; ?></h1>
-					<a class="btn btn-danger" href="index.php?controller=ticket&action=read_ticket&valor=187.188.90.158">Ver mas...</a>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Grupak Cuernavaca">Ver mas...</a>
 				</div>
 			</div>
 
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<div class="hero">
-					<h2><span>Corporativo</span></h2>
+					<h2><span>CORP</span></h2>
 					<div class="bor"></div>
 					<h1><?php  echo $tick_corp; ?></h1>
-					<a class="btn btn-danger" href="index.php?controller=ticket&action=read_ticket&valor=189.240.241.99">Ver mas...</a>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Grupak Corporativo">Ver mas...</a>
 				</div>
 			</div>
 
-			<div class="col-md-2">
+			<div class="col-md-3">
 				<div class="hero">
-					<h2><span>Abastecedoras</span></h2>
+					<h2><span>Abastecimientos Santa Clara</span></h2>
 					<div class="bor"></div>
-					<h1><?php  echo $tick_abas; ?></h1>
-					<a class="btn btn-danger" href="index.php?controller=ticket&action=read_ticket&valor=abas">Ver mas...</a>
+					<h1><?php  echo $abas; ?></h1>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Abastecimientos Fibrosos Santa Clara">Ver mas...</a>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="hero">
+					<h2><span>Abastecimientos Cuautitlan</span></h2>
+					<div class="bor"></div>
+					<h1><?php  echo $Cuautitlan; ?></h1>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Abastecimientos Fibrosos Cuautitlan">Ver mas...</a>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="hero">
+					<h2><span>Abastecimientos Querétaro</span></h2>
+					<div class="bor"></div>
+					<h1><?php  echo $Queretaro; ?></h1>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Abastecimientos  Queretaro">Ver mas...</a>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="hero">
+					<h2><span> Abastecimientos Puebla</span></h2>
+					<div class="bor"></div>
+					<h1><?php  echo $Puebla; ?></h1>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Abastecimientos Fibrosos Puebla">Ver mas...</a>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="hero">
+					<h2><span>Abastecimientos San Luis Potosí</span></h2>
+					<div class="bor"></div>
+					<h1><?php  echo $SanLuisPotosi; ?></h1>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Abastecimientos Fibrosos Santa Luis Potosi">Ver mas...</a>
+				</div>
+			</div>
+
+			<div class="col-md-3">
+				<div class="hero">
+					<h2><span>Abastecimientos Toluca</span></h2>
+					<div class="bor"></div>
+					<h1><?php  echo $Toluca; ?></h1>
+					<a class="btn btn-primary" href="index.php?controller=ticket&action=read_ticket&valor=Abastecimientos Fibrosos Toluca">Ver mas...</a>
 				</div>
 			</div>
 
 		</div>
+		
+		<div class="row">
+			<div class="col-md-12">
+				<div class="hero">
+					<h2><span>Reporte de Tickets</span> | Personal TIC</h2>
+					<div class="bor"></div>
+				</div>
+			</div>
+			
+<?php
+		foreach ($tickStaff as  $value) {
+			$staffName = $value[1].' '.$value[9];
+			echo "<div class='col-md-4' >";
+					echo '<div class="card" style="width: 18rem; margin-bottom:15px;" >
+							<div class="card-body">
+								<h3 class="card-title">'.strtoupper($value[1]).'</h3>
+								<h5 class="card-text">'.strtoupper(utf8_encode($value[9])).'</h5>
+								<a href="index.php?controller=staff&action=index&valor1='.$value[0].'&valor2='.$staffName.'" class="btn btn-primary">Ver mas...</a>
+							</div>
+						</div>';
+			echo "</div>";
+			
+		}
+?>
+			
+		</div>
+		<!-- End Row -->
+
 	</div>
 
 	<div class="bor"></div>

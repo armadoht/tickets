@@ -57,66 +57,41 @@
 		<div class="row">
 			<div class="col-md-12">
 				<div class="hero">
-					<h2><span>Mesa de ayuda</span> | <?php echo $title ?></h2>
+					<h2><span>Reporte de Tickets para: </span> <?php echo $title ?></h2>
 					<div class="bor"></div>
 					<p></p>
 				</div>
 			</div>
 			<div class="col-md-12">
-				<a class="btn btn-danger" href="index.php">Menú Principal ...</a>
+				<a class="btn btn-warning" href="index.php">Menú Principal ...</a>
 			</div>
+			
+			<div class="col-md-12">
+				<?php $total = $created +  $assigned ?>
+				<h1>Mis Tickets Creados <?php echo $created; ?></h1>
+				<div class="progress">
+					<div class="progress-bar" role="progressbar" style="width: <?php echo $created; ?>%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="<?php echo $total;?>"></div>
+				</div>
+
+				<h1>Mis Tickets Asignados <?php echo $assigned; ?></h1>
+				<div class="progress">
+  					<div class="progress-bar" role="progressbar" style="width: <?php echo $assigned; ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="<?php echo $total;?>"></div>
+				</div>
+
+				<h1>Mis Tickets Atendidos <?php echo $less = $assigned-$created ?></h1>
+				<div class="progress">
+  					<div class="progress-bar" role="progressbar" style="width: <?php echo $less; ?>%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="<?php echo $total;?>"></div>
+				</div>
+
+			</div>
+
 		</div>
 	</div>
 	
-		<div class="container-fluid">
-			<div class="row">
-				<div class="col-md-12">
-					<table id="myTable" class="table">
-		                <thead class="thead-dark">
-		                    <tr>
-		                    	<th scope="col">#</th>
-		                        <th scope="col">#Ticket</th>
-		                        <th scope="col">Descripción</th>
-								<th scope="col">Propietario</th>
-								<th scope="col">Fecha de Asignacion</th>
-								<th scope="col">Fecha de Cierre</th>
-								<th scope="col">Responsable Tick</th>
-								<th scope="col">Estatus</th>
-								
-		                    </tr>
-		                </thead>
-		                <tbody>
-		                	<?php 
-		                		$cont = 1;
-		                		if(is_array($array)){
-		                			foreach ($array as  $value) {
-		                				echo "<tr>";
-		                					echo "<th>".$cont."</th>";
-											echo "<th>".$value[0]."</th>";
-											echo "<th>".strtoupper(utf8_encode($value[1]))."</th>";
-											echo "<th>".strtoupper(utf8_encode($value[17]))."</th>";
-											echo "<th>".strtoupper($value[4])."</th>";
-											echo "<th>".$value[3]."</th>";
-											echo "<th>".strtoupper(utf8_encode($value[11]))."</th>";
-											if($value[7] == 'Cerrado'){
-												echo "<th style='color:red;'>".$value[7]."</th>";
-											}else if($value[7] == 'Proceso') {
-												echo "<th style='color:orange;'>".$value[7]."</th>";
-											}else if ($value[7] == 'Abierto'){
-												echo "<th style='color:green;'>".$value[7]."</th>";
-											}
-		                				echo "</tr>";
-		                				$cont++;
-		                			}
-		                		}else{
-		                		echo "<h1>No Existen Tickets Abiertos! [:)]</h1>";
-		                		}
-		                	?>     
-		                </tbody>
-		            </table>
-				</div>
-			</div>
-		</div>
+    <!-- Staff -->
+	<div class="container-fluid">
+			
+	</div>
 	
 
 	<div class="bor"></div>
